@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html ng-app>
+<html ng-app="publicacionesApp">
 <head>
     <meta charset='utf-8'>
     <title>DGEyC</title>
@@ -9,9 +9,9 @@
 
 <body>
     <h1>Publicaciones</h1>
-    <p>{{ "Anuario Estadística de la Ciudad de Buenos Aires" }}</p>
-    <ul>
-        <li ng-repeat="year in [2015, 2014, 2013]">{{ year }}</li>
+    <p>Anuario Estadística de la Ciudad de Buenos Aires</p>
+    <ul ng-controller="ListaPub as lista">
+        <li ng-repeat="year in lista.publicaciones">{{ year }}</li>
     </ul>
 </body>
 </html>
