@@ -14,6 +14,8 @@ estructura          | uso
 --------------------|-------------------
 ng-app="nombre_app" | define y une el HTML con el javascript
 ng-controller="nombre_controlador" | indica dónde unir los datos
+ng-hide="expresion" | oculta si la expresión es falsa
+ng-show="expresion" | muestra solamente si la expresión es verdadera
 
 ## funciones Angular
 funcion    | uso
