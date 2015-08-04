@@ -1,11 +1,23 @@
-"use strict";
+﻿"use strict";
 
 (function (){
 
     var app = angular.module("publicacionesApp",[]);
     
     app.controller("ListaPub",function(){
-        this.publicaciones=[2015, 2014, 2013];
+        this.publicaciones=[{
+            title:'Anuario estadístico',
+            year:2015
+        }, {
+            title:'Cartografía',
+            year:2014
+        }, {
+            title:'Encuesta Anual de Hogares',
+            year:2013
+        }, {
+            title:'Canasta alimentaria',
+            year:2013
+        }];
         // this.publicaciones=[];
     });
 
