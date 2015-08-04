@@ -19,7 +19,9 @@
         <div ng-show="lista.publicaciones.length">
             <p>publicaciones:</p>
             <ul>
-                <li ng-repeat="year in lista.publicaciones">{{ year }}</li>
+                <li ng-repeat="pub in lista.publicaciones">
+                    <span>{{ pub.title }}</span>
+                </li>
             </ul>
         </div>
     </div>
