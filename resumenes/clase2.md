@@ -43,3 +43,10 @@ esto funciona porque se crea una función anónima (dentro del primer par de par
 ### inyección de dependencias
 
 cuando Angular ve que function dentro de `app.controller`  recibe un parámetro llamado `$scope` inyecta un objeto especial que ya está inicializdo de tipo `Scope`. Ese objeto ya tiene algunas propiedades que después vamos a poder usar. 
+
+Ejemplo:
+```js
+    app.controller("lista2",["$scope", function($scope){
+        $scope.publicaciones=[1995, 1994, 1993, 1992];
+    }]);
+```
