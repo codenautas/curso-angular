@@ -17,6 +17,7 @@ ng-controller="nombre_controlador" | indica dónde unir los datos
 ng-hide="expresion" | oculta si la expresión es falsa
 ng-show="expresion" | muestra solamente si la expresión es verdadera
 ng-class="{nombre: expresion}" | asigna ese nombre de clase si la expresión estrue
+ng-bind="variable"  | asocia el contenido del elemento con una variable, por ahora eso hace que textContent del elemento se actualize con el contenido de la variable
 
 ## funciones Angular
 funcion    | uso
