@@ -10,13 +10,18 @@
 <body>
     <h1>Publicaciones</h1>
     <p>Anuario Estadística de la Ciudad de Buenos Aires</p>
-    <ul ng-controller="ListaPub as lista">
-        <li ng-repeat="year in lista.publicaciones">{{ year }}</li>
-    </ul>
-    <h2>Publicaciones Anteriores</h2>
-    <p>Anuario Estadística de la Ciudad de Buenos Aires</p>
-    <ul ng-controller="lista2">
-        <li ng-repeat="year in publicaciones">{{ year }}</li>
-    </ul>
+    
+    <div ng-controller="ListaPub as lista">
+        <div ng-hide="lista.publicaciones.length">
+            <p>No hay publicaciones disponibles</p>
+        </div>
+
+        <div ng-hide="!lista.publicaciones.length">
+            <p>publicaciones:</p>
+            <ul>
+                <li ng-repeat="year in lista.publicaciones">{{ year }}</li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
