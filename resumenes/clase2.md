@@ -18,8 +18,8 @@ ng-controller="nombre_controlador" | indica dónde unir los datos
 ## funciones Angular
 funcion    | uso
 -----------|---------
-angular.module | crea el módulo angular
-controles      | define un controlador
+`angular.module("nombre", [])`                | crea el módulo angular
+`app.controller("nombre", function(){ ... })` | define un controlador
 
 ## Javascript
 
