@@ -13,5 +13,10 @@
     <ul ng-controller="ListaPub as lista">
         <li ng-repeat="year in lista.publicaciones">{{ year }}</li>
     </ul>
+    <h1>Publicaciones Anteriores</h1>
+    <p>Anuario Estadística de la Ciudad de Buenos Aires</p>
+    <ul ng-controller="lista2">
+        <li ng-repeat="year in publicaciones">{{ year }}</li>
+    </ul>
 </body>
 </html>

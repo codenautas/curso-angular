@@ -7,7 +7,9 @@
     app.controller("ListaPub",function(){
         this.publicaciones=[2015, 2014, 2013];
     });
-    
-    console.log(app);
+
+    app.controller("lista2",function($scope){
+        $scope.publicaciones=[1995, 1994, 1993, 1992];
+    });
 
 })();
