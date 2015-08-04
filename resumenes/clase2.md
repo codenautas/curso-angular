@@ -10,10 +10,22 @@ dependencies | para indicar de qué módulos o librerías externas dependemos, a
 prestar | lo que se ejecuta antes del start
 
 ## tags AngularJS
+estructura          | uso
+--------------------|-------------------
+ng-app="nombre_app" | define y une el HTML con el javascript
+ng-controller="nombre_controlador" | indica dónde unir los datos
+
+## funciones Angular
+funcion    | uso
+-----------|---------
+angular.module | crea el módulo angular
+controles      | define un controlador
 
 ## Javascript
 
-Para hacer un módulo (o sea una estructura JS que tenga variables internas privadas que no se vean en otros lados (o sea que no sean globales) se usa el concepto de clausura y la estructura function. Así:
+### módulos
+
+Para hacer un ***módulo*** (o sea una estructura JS que tenga variables internas privadas que no se vean en otros lados (o sea que no sean globales) se usa el concepto de clausura y la estructura function. Así:
 
 ```js
 
