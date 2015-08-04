@@ -19,6 +19,10 @@
             year:2013
         }];
         // this.publicaciones=[];
+        
+        this.isCurrent=function(pub){
+            return pub.year === (new Date()).getFullYear()
+        }
     });
 
 })();

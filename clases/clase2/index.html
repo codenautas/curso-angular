@@ -23,7 +23,7 @@
                 <li ng-repeat="pub in lista.publicaciones">
                     <span>{{ pub.title }}</span>
                     <span> - </span>
-                    <span ng-class='{current_year: pub.year == 2015}'>{{ pub.year }}</span>
+                    <span ng-class='{current_year: lista.isCurrent(pub)}'>{{ pub.year }}</span>
                 </li>
             </ul>
         </div>
