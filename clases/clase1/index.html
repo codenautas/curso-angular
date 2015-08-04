@@ -1,0 +1,14 @@
+﻿<html ng-app>
+<head>
+    <title>DGEyC</title>
+    <script src="/node_modules/angular/angular.min.js"></script>
+</head>
+
+<body>
+    <h1>Publicaciones</h1>
+    <p>{{ "Anuario Estadística de la Ciudad de Buenos Aires" }}</p>
+    <ul>
+        <li ng-repeat="year in [2015, 2014, 2013]">{{ year }}</li>
+    </ul>
+</body>
+</html>
