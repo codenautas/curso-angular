@@ -25,7 +25,9 @@
                     <span> - </span>
                     <span ng-class='{current_year: lista.isCurrent(pub)}'>{{ pub.year }}</span>
                     <span> - </span>
-                    <a href="{{pub.url}}">PDF</a>
+                    <a href="{{pub.url}}">
+                        <span ng-bind="pub.type"></span>
+                    </a>
                 </li>
             </ul>
         </div>
