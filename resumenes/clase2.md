@@ -7,7 +7,7 @@
 clave    | uso
 ---------|-------
 dependencies | para indicar de qué módulos o librerías externas dependemos, al ponerlo acá no tenemos que incluir el código de esos módulos dentro de nuestro repositorio
-prestar | lo que se ejecuta antes del start
+prestart | lo que se ejecuta antes del start
 
 ## tags AngularJS
 estructura          | uso
@@ -38,3 +38,8 @@ Para hacer un ***módulo*** (o sea una estructura JS que tenga variables interna
 ```
 
 esto funciona porque se crea una función anónima (dentro del primer par de paréntesis) que es ejecutada inmediatamente, gracias a los segundos paréntesis que es la sitanxis de ejecutar funciones (`f()`). Luego esas variables existen y solo ahí dentro.
+
+## conceptos
+### inyección de dependencias
+
+cuando Angular ve que function dentro de `app.controller`  recibe un parámetro llamado `$scope` inyecta un objeto especial que ya está inicializdo de tipo `Scope`. Ese objeto ya tiene algunas propiedades que después vamos a poder usar. 
