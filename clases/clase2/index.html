@@ -21,7 +21,7 @@
             <p>publicaciones:</p>
             <ul>
                 <li ng-repeat="pub in lista.publicaciones">
-                    <img src="{{pub.logo}}">
+                    <img ng-src="{{pub.logo}}">
                     <span>{{ pub.title }}</span>
                     <span> - </span>
                     <span ng-class='{current_year: lista.isCurrent(pub)}'>{{ pub.year }}</span>
