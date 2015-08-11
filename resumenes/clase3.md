@@ -6,7 +6,6 @@
 funcion          |	uso
 -----------------|-----
 <ng-view>        | es el lugar donde se van a dibujar las vistas con el módulo angular-router
-$html.get("url") | hace la llamda ajax y devuelve una promesa
 
 # funciones Angular
 
@@ -18,6 +17,7 @@ app.config()     | para configurar la aplicación
 $routeProvider   | es un parámetro autobinding que recibe el `app.config`
 $routeProvider.when | para definir qué vista tomar según el `#path`
 $routeProvider.otherwise | para definir qué hacer si no está contemplado el `#path`
+$routeParams     | autobinding del controlador, tiene los parámetros del `#path` así como se definieron en el `.when`
 
 # Desarrollo
 
@@ -46,3 +46,5 @@ El **router** va a tomare el trabajo de ir ocultando las partes o **vistas**.
   2. Luego metemos en otro achivo dentro de views (views/lista.html) lo que va a la sección
   3. iniciamo `app.config();` en el módulo ya definido
   4. ahí metemos un `$routeProvider` al que le configuramos las direcciones que sabemos mandar a vistas
+  5. tenemos que definir un controller para cada lista
+  6. podemos tomar los parámetros definidos con dos puntos `:param` en el controlador gracias al objeto `$routeParams`
