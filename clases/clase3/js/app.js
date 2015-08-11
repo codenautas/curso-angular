@@ -18,5 +18,13 @@
                                     // Si acá pongo un this, no es el mismo que está afuera. Porque el this depende del contexto, apunta al objeto para el cual la función pertenece. Un this acá, pertenece a la promesa.
         });
     });
-    
+    app.controller("formController",function($routeParams,$http){ //$routeParams es un objeto que tiene 1 propiedad por cada parámetro en la url
+        var vm=this;
+        var formId=$routeParams.formId.toLowerCase();
+        var encId=$routeParams.encId;
+        $http.get("data/"+encId+"_"+formId+".json").then(function(resp){
+            vm.id=resp.data.id;
+            vm.nombre=resp.data.nombre;
+        });
+    });
 })();
