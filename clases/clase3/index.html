@@ -9,11 +9,8 @@
     </head>
     <body>
         <h1>Encuestas DGEyC</h1>
-        Lista de encuestas
-        <div ng-controller="listaController as encuestas">
-            <div ng-repeat="encuesta in encuestas">
-                Encuesta Anual de Hogares
-            </div>
-        </div>
+        <!--tag específico de angular digo:cuando el router funcione, las diferentes vistas mostralas acá-->
+        <ng-view>
+        </ng-view>
     </body>
 </html>
