@@ -26,4 +26,20 @@
         
     });
     
+    app.controller("formController", function($http, $routeParams){
+        
+        var vm = this;
+        
+        var encId = $routeParams.encId;
+        var formId = $routeParams.formId;
+        
+        vm.lista = [];
+
+        $http.get(("data/" + encId + "_" + formId + ".json").toLowerCase()).then(function(resp){
+            vm.id = resp.data.id
+            vm.nombre = resp.data.nombre
+        });
+        
+    });
+    
 })();
