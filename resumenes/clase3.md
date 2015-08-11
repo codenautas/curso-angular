@@ -15,3 +15,5 @@ Estructura actual del ejemplo:
 
 Luego vamos a querer que el formulario responda según lo datos (que no pregunte trabajo a los menores). 
 Para eso hay una propiedad "mostrar" con la condición que se necesita para mostrar ese grupo. 
+
+Agregamos los links al html y probamos `npm start` que todo anda
