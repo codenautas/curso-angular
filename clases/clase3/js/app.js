@@ -20,5 +20,15 @@
         });
     
     });
+    
+    app.controller("formController", function($routeParams, $http){
+       var vm = this;
+       var encId = $routeParams.encId.toLowerCase();
+       var formId = $routeParams.formId.toLowerCase();
+       $http.get("data/" + encId + "_" + formId + ".json").then(function (resp){
+            vm.id = resp.data.id;
+            vm.nombre = resp.data.nombre;
+       });
+    });
 
 })()
