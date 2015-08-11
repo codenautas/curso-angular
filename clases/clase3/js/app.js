@@ -1,5 +1,14 @@
 (function(){
-    var app = angular.module("encuestasApp",[]);
+    var app = angular.module("encuestasApp",["ngRoute"]);
+    app.config(function($routeProvider){
+        $routeProvider.when("/encuestas",{
+            templateUrl:"views/lista.html"
+        }).when("/encuestas/:encId/forms/:formId",{
+            templateUrl:"views/form.html"
+        }).otherwise({
+            redirectTo:"/encuestas"
+        });
+    });
     app.controller("listaController",function($http){
         var vm = this; //view model
         vm.lista=[]; //Este this pertenece al controlador
