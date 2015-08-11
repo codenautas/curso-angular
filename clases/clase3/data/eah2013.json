@@ -3,6 +3,25 @@
     "nombre": "Encuesta Anual de Hogares",
     "periodo": 2013,
     "formularios": [{
+        "id": "A1",
+        "nombre": "Hogar y Vivienda"
+    },{
+        "id": "I1",
+        "nombre": "Individual1"
+    }]
+},{
+    "id": "ETOI2014t1",
+    "nombre": "Encuesta Trimestral de ocupación e ingresos",
+    "periodo": "2014 t 1",
+    "formularios": [{
+        "id": "I1",
+        "nombre": "Individual1"
+    }]
+},{
+    "id": "EAH2014",
+    "nombre": "Encuesta Anual de Hogares",
+    "periodo": 2014,
+    "formularios": [{
         "id": "I1",
         "nombre": "Individual1"
     }]
