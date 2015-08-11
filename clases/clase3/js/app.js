@@ -7,7 +7,7 @@
     app.config(function($routeProvider){
         $routeProvider.when("/encuestas",{
             templateUrl:"views/lista.html"
-        }).when("/encuesta/:encId/forms/:formId",{
+        }).when("/encuesta/:encId/form/:formId",{
             templateUrl:"views/form.html"
         }).otherwise({
             redirectTo:"/encuestas"
