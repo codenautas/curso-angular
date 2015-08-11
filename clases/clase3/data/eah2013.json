@@ -6,4 +6,14 @@
         "id": "I1",
         "nombre": "Individual1"
     }]
-}]
+},
+{
+    "id": "EAH2015",
+    "nombre": "Encuesta Anual de Hogares",
+    "periodo": 2015,
+    "formularios": [{
+        "id": "F1",
+        "nombre": "Familiar"
+    }]
+}
+]
