@@ -9,9 +9,9 @@
 },{
     "id": "EAH2015",
     "nombre": "Encuesta trimestral de Hogares",
-    "periodo": 2013,
+    "periodo": 2015,
     "formularios": [{
-        "id": "I1",
-        "nombre": "Individual1"
+        "id": "F1-2015",
+        "nombre": "Familiar"
     }]
 }]
