@@ -1,7 +1,14 @@
 # Clase 3
 11/8/2015
 
-## Desarrollo
+# funciones Angular
+
+funcion          |	uso
+-----------------|-----
+$html            | es un parámetro autobinding que recibe el controlador
+$html.get("url") | hace la llamda ajax y devuelve una promesa
+
+# Desarrollo
 
 Vamos a ver ruters de Angular para armar formularios dinámicos. 
 
@@ -17,3 +24,5 @@ Luego vamos a querer que el formulario responda según lo datos (que no pregunte
 Para eso hay una propiedad "mostrar" con la condición que se necesita para mostrar ese grupo. 
 
 Agregamos los links al html y probamos `npm start` que todo anda
+
+Utilizamos la función $html para hacer la llamada AJAX asincrónica (con promesas) y lo ponemos en un ng-repeat para verlo
