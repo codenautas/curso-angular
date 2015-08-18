@@ -14,7 +14,7 @@
             .when("/encuestas/:encId/forms/:formId", {
                 templateUrl: "views/form.html",
                 controller: "formController",
-                controllerAs: "form"
+                controllerAs: "form" // es lo que pongo en el tag de la vista formController as form
             })
             // por omisión ir a la lista
             .otherwise({
@@ -48,7 +48,7 @@
         $http.get(url).then(function (resp) {
             vm.id = resp.data.id;
             vm.nombre = resp.data.nombre;
-            vm.preg = resp.data.preguntas;
+            vm.preguntas = resp.data.preguntas;
         });
     });
 
