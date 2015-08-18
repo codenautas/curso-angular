@@ -5,15 +5,17 @@
             <div ng-repeat="campo in pregunta.campos">
                 <label>{{campo.nombre}}</label>
                 <span ng-switch="campo.tipo">
-                    <input ng-switch-when="texto" type="text"></input>
-                    <input ng-switch-when="num"   type="number"></input>
-                    <select ng-switch-when="sel">
+                    <input ng-switch-when="texto" type="text" ng-model="form.respuestas[pregunta.id][campo.id]"></input>
+                    <input ng-switch-when="num"   type="number" ng-model="form.respuestas[pregunta.id][campo.id]"></input>
+                    <select ng-switch-when="sel" ng-model="form.respuestas[pregunta.id][campo.id]">
                       <option ng-repeat="opcion in campo.valores" value="{{opcion.val}}">
-                         {{opcion.texto}}
+                         {{opcion.val}}:{{opcion.texto}}
                       </option>
                     </select>
                 </span>
              
             </div>
     </div>
+    <h3>Objeto respuestas:</h3>
+    {{form.respuestas}}
 </div>
