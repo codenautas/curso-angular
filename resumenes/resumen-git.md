@@ -3,9 +3,9 @@
 ```sh
 
 > git status
-estefi
+On branch estefi
 > git checkout master
-master
+Switched to branch 'master'
 > git pull
 ...
 ...
