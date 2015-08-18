@@ -28,6 +28,9 @@ input[type="number"]{
             <span ng-switch="campo.tipo">
                 <input ng-switch-when="texto" type="text">
                 <input ng-switch-when="num" type="number">
+                <select ng-switch-when="sel">
+                    <option ng-repeat="valor in campo.valores" value="{{valor.val}}">{{valor.val}}: {{valor.texto}}</option>
+                </select>
             </span>
         </div>
     </div>
