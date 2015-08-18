@@ -8,10 +8,12 @@ estefi
 master
 > git pull
 ...
+...
+# se copian a mano la carpeta clase4 en otro lado
 > git checkout estefi
+# copian al repositorio la carpeta clase4
 estefi
 > git status
 estefi
-> git.exe merge -m "Agrego la clase 4 que subió Gabriel" master
 
 ```
