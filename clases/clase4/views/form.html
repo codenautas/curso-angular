@@ -1,17 +1,23 @@
 <div>
     <h3>{{form.id}} - {{form.nombre}}</h3>
     <div ng-repeat="pregunta in form.preguntas">
-        <h4>{{pregunta.nombre}}</h4>
-        <div ng-repeat="campo in pregunta.campos">
-            <label>{{campo.nombre}}</label> <!-- Existe una directiva que se llama switch para cambiar casos dependiendo de laguna propiedad-->
-            <span ng-switch="campo.tipo">
-                <input ng-switch-when="texto" type="text" ng-model="form.respuestas[pregunta.id][campo.id]">
-                <input ng-switch-when="num" type="number" ng-model="form.respuestas[pregunta.id][campo.id]">
-                <select ng-switch-when="sel" type="checkbox" ng-model="form.respuestas[pregunta.id][campo.id]">
-                    <option ng-repeat="opcion in campo.valores" value="{{opcion.val}}">{{opcion.val}}:{{opcion.texto}}</option>
-                </select>
-            </span>
+        <div ng-hide="form.filtros[pregunta.id]">
+            <h4>{{pregunta.id}}-{{pregunta.nombre}}</h4>
+            <div ng-repeat="campo in pregunta.campos">
+                <label>{{campo.nombre}}</label> <!-- Existe una directiva que se llama switch para cambiar casos dependiendo de laguna propiedad-->
+                <span ng-switch="campo.tipo">
+                    <input ng-switch-when="texto" type="text" ng-model="form.respuestas[pregunta.id][campo.id]">
+                    <input ng-switch-when="num" type="number" ng-model="form.respuestas[pregunta.id][campo.id]">
+                    <select ng-switch-when="sel" type="checkbox" ng-model="form.respuestas[pregunta.id][campo.id]">
+                        <option ng-repeat="opcion in campo.valores" value="{{opcion.val}}">{{opcion.val}}:{{opcion.texto}}</option>
+                    </select>
+                </span>
+            </div>
         </div>
     </div>
+    <P>
+        <button ng-click="form.grabar()">Enviar Datos</button>
+    </p>
     <h3>{{form.respuestas}}</h3>
+    <h3>filtros: {{form.filtros}}</h3>
 </div>
