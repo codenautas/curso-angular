@@ -5,7 +5,7 @@
 
 funcion          |	uso
 -----------------|-----
-<ng-view>        | es el lugar donde se van a dibujar las vistas con el módulo angular-router
+`<ng-view>`      | es el lugar donde se van a dibujar las vistas con el módulo angular-router
 
 # funciones Angular
 
