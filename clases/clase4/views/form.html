@@ -8,7 +8,15 @@
     margin-right:6px;
 }
 .campos{
+    margin:3px;
     margin-left:64px;
+}
+.campos label{
+    display:inline-block;
+    min-width:64px;
+}
+input[type="number"]{
+    width:48px;
 }
 </style>
 <div>
@@ -17,8 +25,10 @@
         <h4><b class=id_pregunta>{{pregunta.id}}</b> {{pregunta.nombre}}</h4>
         <div class="campos" ng-repeat="campo in pregunta.campos">
             <label>{{campo.nombre}}</label>
-            
+            <span ng-switch="campo.tipo">
+                <input ng-switch-when="texto" type="text">
+                <input ng-switch-when="num" type="number">
+            </span>
         </div>
-        
     </div>
 </div>
