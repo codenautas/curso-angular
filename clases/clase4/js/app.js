@@ -35,7 +35,7 @@
         });
     });
 
-    app.controller("formController", function ($routeParams, $http) {
+    app.controller("formController", function ($routeParams, $http, $scope) {
         var vm = this;
 
         // precargar formulario vacío
@@ -49,7 +49,42 @@
             vm.id = resp.data.id;
             vm.nombre = resp.data.nombre;
             vm.preguntas = resp.data.preguntas;
+            var watches = [];
+            vm.preguntas.filter(function (pregunta){
+                return pregunta.filtro;
+            }).forEach(function(pregunta){
+                watches.push(pregunta.filtro);
+            });
+        /* $scope.$watchCollection(function(scope){
+                return watches.map(function(filtro){
+                    var split= filtro.campo.split(".");
+                    var valor=
+                });
+            })
+        */
         });
-    });
+        
+        vm.grabar = function() {
+          //alert(2);
+          var url = "encuesta/" + encId + "/" + formId;
+          $http.post(url, vm.respuestas).then(function(resp){
+            //exito
+            alert("Envío exitoso!");
+          }, function (){
+            alert("Problmas al enviar la encuesta");
+          });
+        };
+        vm.filtros={};
+        $scope.$watch(function(scope){
+          return vm.respuestas && vm.respuestas.DI1 && vm.respuestas.DI1.edad;
+        }, function (){
+             if (vm.respuestas&&vm.respuestas.DI1 &&vm.respuestas.DI1.edad>=10) {
+                vm.filtros.T1 = false;
+             } else{
+                vm.filtros.T1 = true;
+             }
+             })
+        
+     });
 
 })();
