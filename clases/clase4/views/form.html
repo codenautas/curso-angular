@@ -18,19 +18,28 @@
 input[type="number"]{
     width:48px;
 }
+.opciones{
+    font-family:arial;
+    font-size:90%;
+}
 </style>
 <div>
     <h3>{{form.id}} - {{form.nombre}}</h3>
+    <div><input type=checkbox ng-model="form.tipoop" id="tipoop"><label for="tipoop">Modo de opciones</label></div>
     <div ng-repeat="pregunta in form.preguntas">
         <h4><b class=id_pregunta>{{pregunta.id}}</b> {{pregunta.nombre}}</h4>
         <div class="campos" ng-repeat="campo in pregunta.campos">
             <label>{{campo.nombre}}</label>
             <span ng-switch="campo.tipo">
-                <input ng-switch-when="texto" type="text" ng-model="form.respuestas[pregunta.id][campo.id]">
-                <input ng-switch-when="num" type="number" ng-model="form.respuestas[pregunta.id][campo.id]">
-                <select ng-switch-when="sel"              ng-model="form.respuestas[pregunta.id][campo.id]">
+                <input ng-switch-when="texto" type="text"  ng-model="form.respuestas[pregunta.id][campo.id]">
+                <input ng-switch-when="num" type="number"  ng-model="form.respuestas[pregunta.id][campo.id]">
+                <select ng-switch-when="sel"              ng-model="form.respuestas[pregunta.id][campo.id]" ng-hide="form.tipoop">
                     <option ng-repeat="valor in campo.valores" value="{{valor.val}}">{{valor.val}}: {{valor.texto}}</option>
                 </select>
+                <div ng-switch-when="sel" ng-repeat="valor in campo.valores" class=opciones  ng-show="form.tipoop">
+                    <input id="{{pregunta.id}}/{{campo.id}}/{{valor.val}}" name="{{pregunta.id}}{{campo.id}}" ng-model="form.respuestas[pregunta.id][campo.id]" type="radio" value="{{valor.val}}">
+                    <label for= "{{pregunta.id}}/{{campo.id}}/{{valor.val}}">{{valor.val}}: {{valor.texto}}</label>
+                </div>
             </span>
         </div>
     </div>
