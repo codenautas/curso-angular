@@ -4,9 +4,10 @@
 # tags Angular
 
 tag              | uso
------------------|-----
+-----------------|------------------------------------------
 `ng-switch`      | para elegir entre tags
 `ng-model`       | para tomar los datos
+`ng-click`       | para ejecutar una función desde un botón
 
 # funciones Angular
 
@@ -34,3 +35,13 @@ Ahora tenemos que poner el tag input, pero según el tipo de la variable vamos a
 para decidir cual vamos a usar `ng-switch`. Y ponemos dentro los inputs. 
 
 Ahora queremos empezar a reaccionar con los datos que carga el usuario para eso vamos a usar `ng-model`
+
+## usando el concepto de modelo (directiva `ng-model`)
+
+El modelo es el que va a sincronizar las variables del modelo y los inputs. 
+En ng-model ponemos la expresión con la que se obtiene la variable (probablemente dentro de un objeto)
+donde guardar los datos. Luego **todo se sincroniza automáticamente**. 
+
+## vamos a grabar los datos en el servidor (`ng-click`)
+
+La función debe estar definida dentro del controlador
