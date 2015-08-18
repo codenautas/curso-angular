@@ -1,3 +1,18 @@
 <div>
     <h3>{{form.id}} - {{form.nombre}}</h3>
+    <div ng-repeat="pregunta  in form.preguntas">
+        <h4>{{pregunta.nombre}}</h4>
+        <div ng-repeat="campo  in pregunta.campos">
+            <label>{{campo.nombre}}</label>
+            <span ng-switch="campo.tipo">
+                <input ng-switch-when="texto" type="text">
+                <input ng-switch-when="num" type="number">
+                <select ng-switch-when="sel">
+                    <option ng-repeat="valor  in campo.valores">{{valor.val}}: {{valor.texto}}
+                    </option>
+                   
+                </select>
+            </span>
+        </div>
+    </div>
 </div>
