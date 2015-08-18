@@ -14,6 +14,9 @@ tag              | uso
 funcion          |	uso
 -----------------|-----
 $routeProvider.when({controller:, controllerAs:}) | para asociar un controlador a la vista en forma dinámica
+$scope.$watch    | revisa cambios en el modelo y acciona
+$scope.$watchCollection     | lo mismo para sitauciones más complejas
+
 
 # Desarrollo
 
@@ -44,4 +47,23 @@ donde guardar los datos. Luego **todo se sincroniza automáticamente**.
 
 ## vamos a grabar los datos en el servidor (`ng-click`)
 
-La función debe estar definida dentro del controlador
+La función debe estar definida dentro del controlador. 
+Ahí podemos hacer la llamada AJAX que necesitemos para acceder a los datos. 
+
+## filtros (reaccionar en base a cambios)
+
+La función $watch nos permite registrar un par de funciones, 
+la primera se evalúa todo el tiempo y es la que tiene el disparador, 
+cuando esa función devuelva un valor distinto que la vuelta anterior se dispara la segunda función. 
+
+`$scope.$watch(disparador, ejecutador)`
+
+ejemplo:
+
+```js
+$scope.$watch(function(scope){
+    return vm.edad;
+}, function(){
+    vm.esconder.preguntasMayores = vm.edad<18;
+});
+```
