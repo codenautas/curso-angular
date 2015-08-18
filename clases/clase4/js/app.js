@@ -50,6 +50,14 @@
             vm.nombre = resp.data.nombre;
             vm.preguntas = resp.data.preguntas;
         });
+        vm.grabar=function() {
+            var url ="respuesta/" + encId + "_" + formId ;
+            $http.post(url,vm.respuestas).then(function(resp) {
+                alert("Envio exitoso");
+            },function(resp){;
+                alert("Problemas al enviar encuesta");
+            })
+        }
     });
 
 })();
