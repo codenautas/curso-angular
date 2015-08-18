@@ -48,7 +48,7 @@
         $http.get(url).then(function (resp) {
             vm.id = resp.data.id;
             vm.nombre = resp.data.nombre;
-            vm.preg = resp.data.preguntas;
+            vm.preguntas = resp.data.preguntas;
         });
     });
 
