@@ -5,7 +5,8 @@
 
 tag              | uso
 -----------------|-----
-      | 
+`ng-switch`      | para elegir entre tags
+`ng-model`       | para tomar los datos
 
 # funciones Angular
 
@@ -25,3 +26,11 @@ Así podemos tener para la misma vista distintos controladores.
 Las funciones asincrónicas, por ejemplo $http para hacer la llamadas ajax, tardan. 
 Dentro del controlador hay que inicializar los datos de alguna manera 
 (que son los que se irán mostrando mientras ocurra la demora).
+
+En la clase 4 en `form.html` vamos agregando los elementos a la vista 
+para ir viendo los nombres de las preguntas y los campos.
+
+Ahora tenemos que poner el tag input, pero según el tipo de la variable vamos a usar un input o un select;
+para decidir cual vamos a usar `ng-switch`. Y ponemos dentro los inputs. 
+
+Ahora queremos empezar a reaccionar con los datos que carga el usuario para eso vamos a usar `ng-model`
