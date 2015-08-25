@@ -21,16 +21,29 @@
                 redirectTo: "/encuestas"
             });
     });
-
-    app.controller("listaController", function ($http) {
+    app.service("encuestasService", function ($http) {
+        return{
+            getEncuestas: function () {
+                 var url = "data/eah2013.json";
+                 return $http.get(url);
+            }
+            
+        };
+    });
+    app.controller("listaController", function ( encuestasService) {
         var vm = this;
 
         // precargar lista vacía
         vm.lista = [];
 
         // obtener lista desde JSON
+        /*
         var url = "data/eah2013.json";
         $http.get(url).then(function (resp) {
+            vm.lista = resp.data;
+        });
+        */
+        encuestasService.getEncuestas().then(function (resp) {
             vm.lista = resp.data;
         });
     });
