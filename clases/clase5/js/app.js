@@ -25,21 +25,20 @@
         return{
             getEncuestas: function () {
                  var url = "data/eah2013.json";
-                 return $http.get(url);
-                 /* nuevo
+                 //return $http.get(url);
+                 /* nuevo */
                  return $http.get(url).then( function (resp) {
                     return resp.data;
                  });
-                 */
+                 
             },
             getFormulario: function (encId,  formId) {
                  var url = "data/" + encId + "_" + formId + ".json";
-                 return $http.get(url);
-                 /* nuevo
+                // return $http.get(url);
+                 /* nuevo */
                  return $http.get(url).then( function (resp) {
                     return resp.data;
                  });
-                 */
             },
             grabarFormulario: function ( encId,  formId, datos) {
                  var url ="respuesta/" + encId + "_" + formId ;
@@ -62,7 +61,7 @@
         });
         */
         encuestasService.getEncuestas().then(function (resp) {
-            vm.lista = resp.data;
+            vm.lista = resp;
         });
     });
 
@@ -85,9 +84,9 @@
         });
         */
         encuestasService.getFormulario(encId,  formId).then(function (resp) {
-            vm.id = resp.data.id;
-            vm.nombre = resp.data.nombre;
-            vm.preguntas = resp.data.preguntas;
+            vm.id = resp.id;
+            vm.nombre = resp.nombre;
+            vm.preguntas = resp.preguntas;
         });
         vm.grabar=function() {
             //var url ="respuesta/" + encId + "_" + formId ;
@@ -110,6 +109,11 @@
         })
        */ 
      });
- //   });
+    app.directive( "miDebugTag",function(){
+            return{
+                templateUrl: "directives/miDebugTag.html",  /*"<h3>Objeto respuestas:</h3>{{form.respuestas}}"*/
+                restrict: "A"
+            };
+    });
 
 })();
