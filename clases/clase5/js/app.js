@@ -21,11 +21,29 @@
                 redirectTo: "/encuestas"
             });
     });
-    app.service("encuestasService", function ($http) {
+    app.service("encuestasService", function ($http /*,$routeParams*/) {
         return{
             getEncuestas: function () {
                  var url = "data/eah2013.json";
                  return $http.get(url);
+                 /* nuevo
+                 return $http.get(url).then( function (resp) {
+                    return resp.data;
+                 });
+                 */
+            },
+            getFormulario: function (encId,  formId) {
+                 var url = "data/" + encId + "_" + formId + ".json";
+                 return $http.get(url);
+                 /* nuevo
+                 return $http.get(url).then( function (resp) {
+                    return resp.data;
+                 });
+                 */
+            },
+            grabarFormulario: function ( encId,  formId, datos) {
+                 var url ="respuesta/" + encId + "_" + formId ;
+                 return $http.post(url,datos);
             }
             
         };
@@ -48,29 +66,50 @@
         });
     });
 
-    app.controller("formController", function ($routeParams, $http) {
+    app.controller("formController", function (encuestasService ,$routeParams /*, $http*/) {
         var vm = this;
 
         // precargar formulario vacío
         vm.data = {};
 
         // obtener datos desde JSON según parámetros
+        
         var encId = $routeParams.encId.toLowerCase();
         var formId = $routeParams.formId.toLowerCase();
+        /*
         var url = "data/" + encId + "_" + formId + ".json";
         $http.get(url).then(function (resp) {
             vm.id = resp.data.id;
             vm.nombre = resp.data.nombre;
             vm.preguntas = resp.data.preguntas;
         });
+        */
+        encuestasService.getFormulario(encId,  formId).then(function (resp) {
+            vm.id = resp.data.id;
+            vm.nombre = resp.data.nombre;
+            vm.preguntas = resp.data.preguntas;
+        });
         vm.grabar=function() {
-            var url ="respuesta/" + encId + "_" + formId ;
-            $http.post(url,vm.respuestas).then(function(resp) {
+            //var url ="respuesta/" + encId + "_" + formId ;
+            encuestasService.grabarFormulario( encId,  formId, vm.respuestas).then(function(resp) {
                 alert("Envio exitoso");
             },function(resp){;
                 alert("Problemas al enviar encuesta");
             })
         }
-    });
+        /* copio lo de filtros que faltaba
+        vm.filtros={};
+        $scope.$watch(function(scope){
+            return vm.respuestas && vm.respuestas.DI1 && vm.respuestas.DI1.edad; 
+        },function(){
+            if ( vm.respuestas && vm.respuestas.DI1 &&vm.respuestas.DI1.edad >=10){
+                vm.filtros.T1 = false;
+            }else{
+                vm.filtros.T1=true;
+            }
+        })
+       */ 
+     });
+ //   });
 
 })();
