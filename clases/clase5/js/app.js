@@ -21,16 +21,28 @@
                 redirectTo: "/encuestas"
             });
     });
+    
+    app.service("encuestasService", function($http){
+       return {
+          getEncuestas: function(){
+             var url = "data/eah2013.json";
+             return $http.get(url);
+          }
+       }
+    });
 
-    app.controller("listaController", function ($http) {
+    app.controller("listaController", function ($http, encuestasService) {
         var vm = this;
 
         // precargar lista vacía
         vm.lista = [];
 
         // obtener lista desde JSON
-        var url = "data/eah2013.json";
+        /* var url = "data/eah2013.json";
         $http.get(url).then(function (resp) {
+            vm.lista = resp.data;
+        }); */
+        encuestasService.getEncuestas().then(function (resp) {
             vm.lista = resp.data;
         });
     });
@@ -88,7 +100,7 @@
           });
         };
 
-        /*
+        
         vm.filtros={};
         $scope.$watch(function(scope){
           return vm.respuestas && vm.respuestas.DI1 && vm.respuestas.DI1.edad;
@@ -101,35 +113,6 @@
                 vm.filtros.T1 = true;
              }
              });
-        */
-        vm.filtros={};
-        $scope.$watchCollection(function(scope){
-          //return vm.respuestas && vm.respuestas.DI1 && vm.respuestas.DI1.edad;
-          return vm.todosLosFiltros;
-        }, function (newCollection, oldCollection){
-              //console.log($scope.form.todosLosFiltros.length);
-              //console.log($scope.$digest);
-              if (newCollection === oldCollection) {
-                    return;
-              }
-              alert("El nuevo valor es:" + newCollection);
-              /*
-              alert(oldFiltros.length);
-             for (var i=0; i<=oldFiltros.length; i++){
-                vm.filtros = newFiltros[i];
-             }*/
-             //vm.filtros[newfiltros]=!eval
-             /*
-             if (vm.respuestas&&vm.respuestas.DI1 &&vm.respuestas.DI1.edad>=10) {
-                vm.filtros.T1 = false;
-             } else{
-                vm.filtros.T1 = true;
-             } */
-             
-             });
-
-
-             
      });
 
 })();
