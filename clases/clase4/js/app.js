@@ -55,6 +55,19 @@
             }).forEach(function(pregunta){
                 watches.push(pregunta.filtro);
             });
+            
+            
+            vm.todosLosFiltros = [];
+            vm.preguntas.filter(function (pregunta){
+                  return pregunta.filtro;
+                }).forEach(function(pregunta){
+                var filtroObj={};
+                var filtroExp ='vm.respuestas && vm.respuestas.' + pregunta.filtro["campo"].split(".")[0] + ' && vm.respuestas.' +
+                    pregunta.filtro["campo"] + pregunta.filtro["cond"] + pregunta.filtro["ref"];
+                filtroObj[pregunta.id]=filtroExp;
+                vm.todosLosFiltros.push(filtroObj);
+                });
+          //console.log(vm.todosLosFiltros[0].T1);
         /* $scope.$watchCollection(function(scope){
                 return watches.map(function(filtro){
                     var split= filtro.campo.split(".");
@@ -74,17 +87,49 @@
             alert("Problmas al enviar la encuesta");
           });
         };
+
+        /*
         vm.filtros={};
         $scope.$watch(function(scope){
           return vm.respuestas && vm.respuestas.DI1 && vm.respuestas.DI1.edad;
+          vm.respuestas && vm.respuestas.DI1.edad && vm.respuestas.DI1.edad>=10
         }, function (){
-             if (vm.respuestas&&vm.respuestas.DI1 &&vm.respuestas.DI1.edad>=10) {
+             if (vm.respuestas&&vm.respuestas.DI1      &&vm.respuestas.DI1.edad>=10) {
+                 vm.respuestas&&vm.respuestas.DI1.edad && vm.respuestas.DI1.edad>=10
                 vm.filtros.T1 = false;
              } else{
                 vm.filtros.T1 = true;
              }
-             })
-        
+             });
+        */
+        vm.filtros={};
+        $scope.$watchCollection(function(scope){
+          //return vm.respuestas && vm.respuestas.DI1 && vm.respuestas.DI1.edad;
+          return vm.todosLosFiltros;
+        }, function (newCollection, oldCollection){
+              //console.log($scope.form.todosLosFiltros.length);
+              //console.log($scope.$digest);
+              if (newCollection === oldCollection) {
+                    return;
+              }
+              alert("El nuevo valor es:" + newCollection);
+              /*
+              alert(oldFiltros.length);
+             for (var i=0; i<=oldFiltros.length; i++){
+                vm.filtros = newFiltros[i];
+             }*/
+             //vm.filtros[newfiltros]=!eval
+             /*
+             if (vm.respuestas&&vm.respuestas.DI1 &&vm.respuestas.DI1.edad>=10) {
+                vm.filtros.T1 = false;
+             } else{
+                vm.filtros.T1 = true;
+             } */
+             
+             });
+
+
+             
      });
 
 })();
