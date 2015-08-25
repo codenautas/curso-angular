@@ -22,20 +22,32 @@
             });
     });
 
-    app.controller("listaController", function ($http) {
+    app.service("encuestasService", function($http){
+        return {
+            getEncuestas: function(){
+                var url = "data/eah2013.json";
+                return $http.get(url);
+            },
+            getFormulario: function(encId, formId){
+                var url = "data/" + encId + "_" + formId + ".json";
+                return $http.get(url);
+            }
+        };
+    });
+    
+    app.controller("listaController", function (encuestasService) {
         var vm = this;
 
         // precargar lista vacía
         vm.lista = [];
 
         // obtener lista desde JSON
-        var url = "data/eah2013.json";
-        $http.get(url).then(function (resp) {
+        encuestasService.getEncuestas().then(function (resp) {
             vm.lista = resp.data;
         });
     });
 
-    app.controller("formController", function ($routeParams, $http, $scope) {
+    app.controller("formController", function ($routeParams, $scope, encuestasService) {
         var vm = this;
 
         // precargar formulario vacío
@@ -44,8 +56,7 @@
         // obtener datos desde JSON según parámetros
         var encId = $routeParams.encId.toLowerCase();
         var formId = $routeParams.formId.toLowerCase();
-        var url = "data/" + encId + "_" + formId + ".json";
-        $http.get(url).then(function (resp) {
+        encuestasService.getFormulario(encId, formId).then(function (resp) {
             vm.id = resp.data.id;
             vm.nombre = resp.data.nombre;
             vm.preguntas = resp.data.preguntas;
