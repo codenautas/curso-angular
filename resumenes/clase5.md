@@ -58,3 +58,15 @@ app.directive('miDebugTag", function(){
 
   * El template se puede traer desde una url con `templateUrl: "url"`
   * La directiva se puede restringir a un atributo o elemento o clase (según su inicial). Ej: `restrict: "A"` (ojo con las directivas con elemento pueden fallar en Internet Explorer)
+
+## usando RequireJS
+
+Como la carga es asincrónica hay que inicar a mano el angular
+
+$script([
+  'angular.js', 
+  'primer.js',
+  'segundo.js'
+], function(){
+  angular.bootstrap(document, [ 'myApp']);
+});
