@@ -4,7 +4,9 @@
         <div ng-hide="form.filtros[pregunta.id]">
             <h4>{{pregunta.id}}-{{pregunta.nombre}}</h4>
             <div ng-repeat="campo in pregunta.campos">
-                <label>{{campo.nombre}}</label> <!-- Existe una directiva que se llama switch para cambiar casos dependiendo de laguna propiedad-->
+            <!-- {{campo.nombre}} -->
+                <!-- <mi-campo></mi-campo> -->
+                <label ng-bind="campo.nombre"></label> <!-- Existe una directiva que se llama switch para cambiar casos dependiendo de laguna propiedad-->
                 <span ng-switch="campo.tipo">
                     <input ng-switch-when="texto" type="text" ng-model="form.respuestas[pregunta.id][campo.id]">
                     <input ng-switch-when="num" type="number" ng-model="form.respuestas[pregunta.id][campo.id]">
@@ -18,6 +20,10 @@
     <P>
         <button ng-click="form.grabar()">Enviar Datos</button>
     </p>
-    <h3>{{form.respuestas}}</h3>
+    <!-- <h3>Objeto Respuestas</h3>
+            {{form.respuestas}}    -->
+     <mi-debug-tag></mi-debug-tag>  
+    <!-- <div class="mi-debug-tag"></div> -->
+
     <h3>filtros: {{form.filtros}}</h3>
 </div>

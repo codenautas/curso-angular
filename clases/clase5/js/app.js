@@ -22,20 +22,48 @@
             });
     });
 
-    app.controller("listaController", function ($http) {
+    app.service("encuestasService",function($http){ //quiero concentrar todas las llamadas al servidor. Esta función tiene que devolver un objeto que va a ser el servicio. //Los servicios son únicos. Los controladores se crean y se destruyen al levantar una vista
+        // var serverUrl="https://server.ba.gob.ar"
+        return {
+            getEncuestas: function(){
+                var url = "data/eah2013.json";
+                return $http.get(url).then(function(resp){
+                    return resp.data;
+                });
+            },
+            getFormulario: function(encId,formId){
+                var url = "data/" + encId + "_" + formId + ".json";
+                return $http.get(url).then(function(resp){
+                    return resp.data;
+                });
+            },
+            grabarFormulario: function(encId,formId,datos){
+                var url="respuesta/" + encId + "/" + formId; 
+                return $http.post(url,datos).then(function(resp){
+                    return resp.data;
+                });
+            }
+        };
+        
+    });
+    
+    app.controller("listaController", function (encuestasService) {
         var vm = this;
 
         // precargar lista vacía
         vm.lista = [];
 
         // obtener lista desde JSON
-        var url = "data/eah2013.json";
+        /*var url = "data/eah2013.json";
         $http.get(url).then(function (resp) {
             vm.lista = resp.data;
+        });*/
+        encuestasService.getEncuestas().then(function (data) {
+            vm.lista = data;
         });
     });
-
-    app.controller("formController", function ($routeParams, $http,$scope) {
+     // , $http
+    app.controller("formController", function ($routeParams,$scope,encuestasService) {
         var vm = this;
 
         // precargar formulario vacío
@@ -44,11 +72,10 @@
         // obtener datos desde JSON según parámetros
         var encId = $routeParams.encId.toLowerCase();
         var formId = $routeParams.formId.toLowerCase();
-        var url = "data/" + encId + "_" + formId + ".json";
-        $http.get(url).then(function (resp) {
-            vm.id = resp.data.id;
-            vm.nombre = resp.data.nombre;
-            vm.preguntas = resp.data.preguntas;
+        encuestasService.getFormulario(encId,formId).then(function (data) {
+            vm.id = data.id;
+            vm.nombre = data.nombre;
+            vm.preguntas = data.preguntas;
             var watches=[];
             vm.preguntas.filter(function(pregunta){
                 return pregunta.filtro;
@@ -62,12 +89,15 @@
                 });
             })*/
         });
+       /* var url = "data/" + encId + "_" + formId + ".json";
+        $http.get(url)*/
         vm.grabar=function(){
-            var url="respuesta/" + encId + "/" + formId; 
-            $http.post(url,vm.respuestas).then(function(resp){
+            encuestasService.grabarFormulario(encId,formId,vm.respuestas)
+            /*var url="respuesta/" + encId + "/" + formId; 
+            $http.post(url,vm.respuestas)*/.then(function(data){
                 // Exito
                 alert("Envío exitoso");
-            },function(resp){
+            },function(data){
                 alert("Hubo problemas al enviar la respuesta");
             });
         };
@@ -82,5 +112,11 @@
             }
         })
     });
-
+    //Angular entiende miDebugTag=mi-debug-tag
+    app.directive("miDebugTag",function(){
+        return {
+            templateUrl: "directives/miDebugtag.html", 
+            restrict: "E" //Elemento Atributo Clase EAC. En este caso "restrict A" restringite a atributo
+        };
+    })
 })();
