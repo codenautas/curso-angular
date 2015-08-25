@@ -43,3 +43,15 @@ app.controller("listaController", function (encuestaService) {
     });
     // ...
 ```
+
+A diferencia de los controladores, los servicios existen una sola vez, los controladores se construyen y destruyen cuando se cambia de vista. 
+
+## Creación de nuevas directivas
+
+Se pueden usar para hacer el HTML más legible. 
+```js
+app.directive('miDebugTag", function(){
+    return {
+        template:'<div>mi debug</div>';
+    };
+});
