@@ -4,6 +4,9 @@
         <h4>{{pregunta.nombre}}</h4>
           <div ng-hide="form.filtros[pregunta.id]">
             <div ng-repeat="campo in pregunta.campos">
+            
+            
+                <mi-campo></mi-campo>
                 <label ng-bind="campo.nombre"></label>
                 <span ng-switch="campo.tipo">
                     <input ng-switch-when="texto" type="text" ng-model="form.respuestas[pregunta.id][campo.id]"></input>
@@ -14,15 +17,22 @@
                       </option>
                     </select>
                 </span>
-             
+
+
+
+                
             </div>
           </div>
     </div>
     <p></p>
     
     <button ng-click="form.grabar()">Enviar datos</button>
-    <h3>Objeto respuestas:</h3>
-    {{form.respuestas}}
+    <!--h3>Objeto respuestas:</h3>
+    {{form.respuestas}} 
+    <mi-debug-tag></mi-debug-tag>-->
+    <div class="mi-debug-tag"></div>
+
+    
     <h3>filtros: {{form.filtros}}</h3>
-    <h3>todosLosFiltros: {{form.todosLosFiltros}}</h3>
+    <!--h3>todosLosFiltros: {{form.todosLosFiltros}}</h3-->
 </div>
